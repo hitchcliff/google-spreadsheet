@@ -3,7 +3,10 @@
 ## Initialization
 
 ```
+    <script src="https://cdn.jsdelivr.net/gh/hitchcliff/google-spreadsheet/public/bundle.js"></script>
+
 <script>
+
 	// Form element
 	const form = document.querySelector("#form-target");
 
