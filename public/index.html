@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example</title>
+  </head>
+  <body>
+    <!-- Form Section Starts -->
+    <form id="form-target">
+      <div>
+        <input
+          id="input-name"
+          type="text"
+          placeholder="Enter name here"
+          name="name"
+        />
+      </div>
+      <div>
+        <input
+          id="input-email"
+          type="text"
+          placeholder="Enter email here"
+          name="email"
+        />
+      </div>
+      <div>
+        <button>Subscribe</button>
+      </div>
+    </form>
+    <!-- Form Section Ends -->
+
+    <!-- Compiled scripts here -->
+    <script src="bundle.js"></script>
+
+    <script>
+      // Form element
+      const form = document.querySelector("#form-target");
+
+      // Handle submit
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Input fields
+        const name = document.querySelector("#input-name").value;
+        const email = document.querySelector("#input-email").value;
+
+        // Instantiate
+        const spreadsheet = new Spreadsheet();
+
+        // Spreadsheet values
+        spreadsheet.name = name;
+        spreadsheet.email = email;
+        spreadsheet.endpoint =
+          "https://script.google.com/macros/s/AKfycbxde2w_Nevs_bx3x3UV_fjbGHGFTMg-1pEEfuGQe9mKJHvHeX6PMyXicBX4oSUfBs6n/exec";
+        spreadsheet.successMessage = [
+          "Congratulations!",
+          "You are now subscribed",
+        ];
+
+        // Submits the spreadsheet
+        spreadsheet.submit(); // submits the form
+      });
+    </script>
+  </body>
+</html>
