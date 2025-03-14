@@ -1,26 +1,23 @@
-import swal from "sweetalert2";
 import $ from "jquery";
 
 export default class Spreadsheet {
-  name: string = "";
-  email: string = "";
+  data = {};
   endpoint: string = "";
-  successMessage: string[] = [];
+  success = undefined;
+  error = undefined;
 
   public submit() {
-    if (!this.validate) return null; // return if something goes wrong
+    // if (!this.validate) return null; // return if something goes wrong
 
     $.ajax({
       type: "POST",
       url: this.endpoint,
       data: {
         Date: this.getCurrentDate(),
-        Name: this.name,
-        Email: this.email,
+        ...this.data,
       },
-      success: () => {
-        swal.fire(...this.successMessage);
-      },
+      success: this.success,
+      error: this.error,
     });
   }
 
@@ -34,13 +31,13 @@ export default class Spreadsheet {
     return `${date} - ${time} (GMT-4)`;
   }
 
-  private validate() {
-    if (!this.name || !this.email || !this.endpoint || !this.successMessage) {
-      return false;
-    }
+  // private validate() {
+  //   if (!this.name || !this.email || !this.endpoint || !this.successMessage) {
+  //     return false;
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 }
 
 (window as any).Spreadsheet = Spreadsheet;
