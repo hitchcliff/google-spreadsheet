@@ -13,7 +13,7 @@ export default class Spreadsheet {
       type: "POST",
       url: this.endpoint,
       data: {
-        Date: this.getCurrentDate(),
+        date: this.getCurrentDate(),
         ...this.data,
       },
       success: this.success,
