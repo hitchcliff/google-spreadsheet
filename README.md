@@ -22,13 +22,10 @@
 		const spreadsheet = new Spreadsheet();
 
 		// Spreadsheet values
-		spreadsheet.name = name;
-		spreadsheet.email = email;
+		spreadsheet.data = {name, email};
 		spreadsheet.endpoint = "https://script.google.com/macros/s/AKfycbxde2w_Nevs_bx3x3UV_fjbGHGFTMg-1pEEfuGQe9mKJHvHeX6PMyXicBX4oSUfBs6n/exec";
-		spreadsheet.successMessage = [
-			"Congratulations!",
-			"You are now subscribed",
-		];
+		spreadsheet.success = () => alert("success!");
+    spreadsheet.error = () => alert("error!");
 
 		// Submits the spreadsheet
 		spreadsheet.submit(); // submits the form
